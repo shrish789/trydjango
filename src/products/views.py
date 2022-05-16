@@ -4,16 +4,16 @@ from .forms import ProductForm, RawProductForm
 from .models import Product
 # Create your views here.
 
-def product_create_view(request):
-	form = ProductForm(request.POST or None)
-	if form.is_valid():
-		form.save()
-		form = ProductForm()
+# def product_create_view(request):
+# 	form = ProductForm(request.POST or None)
+# 	if form.is_valid():
+# 		form.save()
+# 		form = ProductForm()
 
-	context = {
-		'form': form
-	}
-	return render(request, "product/product_create.html", context)
+# 	context = {
+# 		'form': form
+# 	}
+# 	return render(request, "product/product_create.html", context)
 
 # def product_create_view(request):
 # 	# print(request.GET)
@@ -50,3 +50,13 @@ def product_detail_view(request):
 		'object': obj
 	}
 	return render(request, "product/product_detail.html", context)
+
+def product_create_view(request):
+	initial_data = {
+		'title': "My title"
+	}
+	my_form = RawProductForm(request.POST or None, initial = initial_data)
+	context = {
+		"form": my_form
+	}
+	return render(request, "product/product_create.html", context)
