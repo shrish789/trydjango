@@ -7,4 +7,4 @@ class Product(models.Model):
 	description = models.TextField(blank = True, null = True)
 	price = models.DecimalField(decimal_places = 2, max_digits = 10000)
 	summary = models.TextField(blank = False, null = False)
-	featured = models.BooleanField() # If we want to add a column in our model then we have to give a default value to it or set null as true
+	featured = models.BooleanField(default = False) # If we want to add a column in our model then we have to give a default value to it or set null as true
